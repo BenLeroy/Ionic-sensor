@@ -1,0 +1,57 @@
+<ion-view view-title="{{sensor.key}}">
+  <ion-content>
+    <h1 class="col col-offset-10">Informations about {{sensor.key}}</h1>
+    <div class="list card">
+      <div class="item">
+        <h2>{{sensor.key}}</h2>
+        <p>Created : {{sensor.createdAt | date: "MM/dd/yyyy - HH:mm:ss"}}</p>
+        <p>Last modification : {{sensor.modifiedAt | date: "MM/dd/yyyy - HH:mm:ss"}}</p>
+      </div>
+
+      <div class="item item-body">
+        <p>
+          <div class="list list-inset">
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">ID : {{sensor.id}}</span> 
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Key : {{sensor.key}}</span>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Name : {{sensor.name}}</span>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Status : {{sensor.status}}</span>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Send mail notifications : 
+                <span ng-if="sensor.mailNotif">
+                  <span class='label label-success'>Enabled</span>
+                </span>
+                <span ng-if="!sensor.mailNotif">
+                  <span class='label label-success'>Disabled</span>
+                </span>
+              </span>
+            </label>
+          </div>
+        </p>
+      </div>
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" ui-sref="app.list">
+          <i class="icon ion-reply-all"></i>
+          Return to list
+        </a>
+        <a class="tab-item" ui-sref='app.edit({id: sensor.id})'>
+          <i class="icon ion-gear-a"></i>
+          Edit {{sensor.key}}
+        </a>
+      </div>
+      <ion-list>
+       <h4>History</h4>
+        <ion-item ng-repeat='events in sensor.events | orderBy: "loggedAt":true'>
+          {{events.loggedAt | date: '(dd-MM) HH:mm:ss'}} : {{sensor.key}} has gone <span ng-class="{'OK': 'badge badge-balanced', 'NOK': 'badge badge-assertive', 'Missing': 'badge badge-assertive', 'OFF': 'badge badge-energized'}[events.status]" class='badge badge-stable'>{{events.status}}</span>
+        </ion-item>
+      </ion-list>
+    </div>
+</ion-content>
+</ion-view>

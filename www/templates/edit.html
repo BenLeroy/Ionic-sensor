@@ -1,0 +1,70 @@
+<ion-view view-title="{{sensor.key}} modification">
+  <ion-content>
+    <div class="list card">
+      <div class="item">
+        <h2>{{sensor.key}}</h2>
+        <p>Created : {{sensor.createdAt | date: "MM/dd/yyyy - HH:mm:ss"}}</p>
+        <p>Last modification : {{sensor.modifiedAt | date: "MM/dd/yyyy - HH:mm:ss"}}</p>
+      </div>
+      <div class="item item-body">
+        <p>
+          <div class="list list-inset">
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">ID : {{sensor.id}}</span> 
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Key : {{sensor.key}}</span>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Name : </span>
+              <input type="text" ng-model="sensor.name">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Status : {{sensor.status}}</span>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Expected lag : </span>
+              <input type="number" ng-model='sensor.lag'>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Polling Frequency : </span>
+              <input type="number" ng-model='sensor.frequency'>
+            </label>
+            <label class="item item-toggle item-stacked-label">
+              Send mail notifications {{sensor.mailNotif}}
+              <label class="toggle toggle-balanced">
+                <input type="checkbox" ng-model="sensor.mailNotif">
+                <div class="track">
+                  <div class="handle"></div>
+                </div>
+              </label>
+            </label>
+            <label class="item item-toggle item-stacked-label">
+              Enable monitoring {{sensor.isMonitored}}
+              <label class="toggle toggle-balanced">
+                <input type="checkbox" ng-model="sensor.isMonitored">
+                <div class="track">
+                  <div class="handle"></div>
+                </div>
+              </label>
+            </label>
+          </div>
+        </p>
+	      <div class="item tabs tabs-secondary tabs-icon-left">
+	        <a class="tab-item" ui-sref="app.list">
+	          <i class="icon ion-reply-all"></i>
+	          Return to list
+	        </a>
+	        <a class="tab-item" ng-click='delAlert()' >
+	          <i class="icon ion-trash-a assertive"></i>
+	          Delete {{sensor.key}}
+	        </a>
+          <a class="tab-item" ng-click='SaveMod()' >
+            <i class="icon ion-checkmark-circled balanced"></i>
+            Submit modifications
+          </a>
+	      </div>
+    	</div>
+    </div>
+  </ion-content>
+</ion-view>

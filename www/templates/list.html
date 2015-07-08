@@ -1,0 +1,19 @@
+<ion-view view-title="Sensors">
+  <ion-content>
+    <ion-list class="card">
+      <ion-item ng-repeat='sensor in sensors'>
+        <div ui-sref='app.consult({id: sensor.id})'>
+          <div ng-class="{'OK': 'item item-divider item-balanced', 'NOK': 'item item-divider item-assertive', 'Missing': 'item item-divider item-assertive', 'OFF': 'item item-divider item-energized'}[sensor.status]" class='item item-divider item-stable'>
+            {{sensor.key}} <span ng-class="{'OK': 'badge badge-balanced', 'NOK': 'badge badge-assertive', 'Missing': 'badge badge-assertive', 'OFF': 'badge badge-energized'}[sensor.status]" class='badge badge-stable'>{{sensor.status}}</span>
+          </div>
+          <div class='item item-text-wrap'>
+            <p>ID : {{sensor.id}} <br/> Name : {{sensor.name}}</p>
+          </div>
+          <div class='item item-divider'>
+            Last check @ {{sensor.checkedAt | date: 'HH:mm:ss (dd-MM-yy)'}} - Availability : {{sensor.availability | number: 3}}%
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

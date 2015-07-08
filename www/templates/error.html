@@ -1,0 +1,38 @@
+<ion-view view-title="Error">
+  <ion-content>
+  	<h1>Failed to connect to monitoring server</h1>
+  	<div ng-switch='errorCode'>
+  		<h4 ng-switch-when='0'>
+  			Connection cannot be established to server, please check your connectivity or contact server administrator.
+  		</h4>
+  		<h4 ng-switch-when='400'>
+  			Error : <strong>{{errorCode}}.</strong> Bad Request.
+  		</h4>
+  		<h4 ng-switch-when='403'>
+  			Error : <strong>{{errorCode}}.</strong> You are not authorized to see this resource.
+  		</h4>
+  		<h4 ng-switch-when='404'>
+  			Error : <strong>{{errorCode}}.</strong> This resource is not available.
+  		</h4>
+  		<h4 ng-switch-when='450'>
+  			Error : <strong>{{errorCode}}.</strong> Blocked by Parental Control.
+  		</h4>
+  		<h4 ng-switch-when='499'>
+  			Error : <strong>{{errorCode}}.</strong> Connection reset by peer.
+  		</h4>
+  		<h4 ng-switch-when='500'>
+  			Error : <strong>{{errorCode}}.</strong> Internal server error.
+  		</h4>
+  		<h4 ng-switch-when='502'>
+  			Error : <strong>{{errorCode}}.</strong> Bad Gateway or Proxy Error.
+  		</h4>
+  		<h4 ng-switch-when='503'>
+  			Error : <strong>{{errorCode}}.</strong> Service Unavailable.
+  		</h4>
+  		<h4 ng-switch-when='504'>
+  			Error : <strong>{{errorCode}}.</strong> Gateway Time-out.
+  		</h4>
+  		<h4 ng-switch-default>
+  			Error : <strong>{{errorCode}}.</strong> Unknown Error.
+  		</h4>
+  	</div>

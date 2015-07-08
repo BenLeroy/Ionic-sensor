@@ -1,0 +1,9 @@
+<ion-view view-title="Events">
+  <ion-content>
+    <ion-list>
+    	<ion-item ng-repeat='event in events'>
+    		{{event.loggedAt | date: '(dd-MM) HH:mm:ss'}} : {{event.sensor.key}} has gone <span ng-class="{'OK': 'badge badge-balanced', 'NOK': 'badge badge-assertive', 'Missing': 'badge badge-assertive', 'OFF': 'badge badge-energized'}[event.status]" class='badge badge-stable'>{{event.status}}</span>
+    	</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
