@@ -44,5 +44,5 @@ To build the project with ionic use `$ ionic build [platform]` from project's ro
 
 For Android, use `$ ionic build android` ; the built APK will be found in [dir]/platforms/[android]/build/outputs/apk/android-debug.apk.
 
-If you want to have a working preview, use `$ ionic serve`, it should open your default browser and display a working app, else navigat to [http://localhost:8100](http://localhost:8100).
+If you want to have a working preview, use `$ ionic serve`, it should open your default browser and display a working app, else navigate to [http://localhost:8100](http://localhost:8100).
 
